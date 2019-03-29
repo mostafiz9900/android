@@ -1,6 +1,7 @@
 package com.example.alertdialog;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,8 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button one, two, three, four, five, six;
+    ArrayList<Integer> selecttecList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }else if (v.getId()==R.id.button3){
             alertThree();
         }else if (v.getId()==R.id.button4){
-            alertFive();
+            alertFour();
         }else if (v.getId()==R.id.button5){
             alertFive();
         }
@@ -129,8 +133,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
         builder.show();
     }
-    public void alertFive(){}
-    public void alertSix(){}
+    public void alertFive(){
+        selecttecList=new ArrayList<Integer>();
+        AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Make your selection");
+        builder.setMultiChoiceItems(R.array.choices, null, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                if (isChecked){
+                    selecttecList.add(which);
+                }else if (selecttecList.contains(which)){
+                    selecttecList.remove(Integer.valueOf(which));
+                }
+            }
+        });
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String selecteIndex="";
+                for (Integer i: selecttecList){
+                    selecteIndex+=i+"";
+                }
+                showToast("Select Index "+ selecteIndex);
+            }
+        });
+        builder.show();
+    }
+    public void alertSix(){
+        AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Make your selection");
+        builder.setSingleChoiceItems(R.array.choices,0, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                showToast("you choose "+ which);
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }
 
 
     public void showToast(String msg){

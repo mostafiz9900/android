@@ -7,4 +7,10 @@
     <string name="alert_four">Four List View</string>
     <string name="alert_five">Chack box Button Dialog</string>
     <string name="alert_six">Radio Dialog</string>
+    <string-array name="choices">
+        <item>Page1</item>
+        <item>Sprite</item>
+        <item>Coke</item>
+        <item>Save Up</item>
+    </string-array>
 </resources>
