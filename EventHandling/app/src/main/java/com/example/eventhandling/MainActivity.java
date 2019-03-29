@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
-            Button b=(Button) v;
+                Button b=(Button) v;
             String buttontext=b.getText().toString();
             Toast.makeText(getApplicationContext(),"you click",Toast.LENGTH_LONG).show();
 

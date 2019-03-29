@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Alert Dialog</string>
+
+    <string name="alert_one">One Button Dialog</string>
+    <string name="alert_two">Two Button Dialog</string>
+    <string name="alert_three">Three Button Dialog</string>
+    <string name="alert_four">Four List View</string>
+    <string name="alert_five">Chack box Button Dialog</string>
+    <string name="alert_six">Radio Dialog</string>
+</resources>

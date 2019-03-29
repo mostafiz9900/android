@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Drop down Spinner</string>
+    <string-array name="subjec_name">
+        <item></item>
+        <item>Java</item>
+        <item>html</item>
+        <item>CSS</item>
+        <item>Android</item>
+    </string-array>
+</resources>
