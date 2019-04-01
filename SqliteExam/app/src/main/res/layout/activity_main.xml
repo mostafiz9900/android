@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/txtId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="59dp"
+        android:text="Product Id:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/ptxtId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="46dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="0"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtproduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="155dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/ptxtProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="Product Name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ptxtId" />
+
+    <TextView
+        android:id="@+id/txtQty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="67dp"
+        android:text="Product Qty :"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtproduct" />
+
+    <EditText
+        android:id="@+id/ptxtQty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="51dp"
+        android:ems="10"
+        android:hint="Product Qty"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/ptxtProduct"
+        app:layout_constraintTop_toBottomOf="@+id/ptxtProduct" />
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="68dp"
+        android:text="Add"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtQty"
+        android:onClick="saveProduct"/>
+
+    <Button
+        android:id="@+id/btnFind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="Find"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnAdd"
+        app:layout_constraintStart_toEndOf="@+id/btnAdd"
+        android:onClick="getProductByPrductId"/>
+
+    <Button
+        android:id="@+id/btnDelet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="31dp"
+        android:text="Delete"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnFind"
+        app:layout_constraintStart_toEndOf="@+id/btnFind"
+        android:onClick="deleteProductByProductId"/>
+
+</android.support.constraint.ConstraintLayout>
