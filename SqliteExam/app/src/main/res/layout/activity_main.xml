@@ -34,10 +34,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="155dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginBottom="95dp"
         android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/ptxtQty"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/txtId" />
 
     <EditText
         android:id="@+id/ptxtProduct"
@@ -66,42 +68,82 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="9dp"
-        android:layout_marginTop="51dp"
+        android:layout_marginTop="224dp"
+        android:layout_marginBottom="171dp"
         android:ems="10"
         android:hint="Product Qty"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout6"
         app:layout_constraintStart_toStartOf="@+id/ptxtProduct"
-        app:layout_constraintTop_toBottomOf="@+id/ptxtProduct" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="68dp"
+        android:onClick="saveProduct"
         android:text="Add"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtQty"
-        android:onClick="saveProduct"/>
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnFind"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnFind"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="59dp"
+        android:onClick="getProductByPrductId"
         android:text="Find"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnAdd"
         app:layout_constraintStart_toEndOf="@+id/btnAdd"
-        android:onClick="getProductByPrductId"/>
+        app:layout_constraintTop_toBottomOf="@+id/ptxtQty" />
 
     <Button
         android:id="@+id/btnDelet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="31dp"
+        android:onClick="deleteProductByProductId"
         android:text="Delete"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnFind"
-        app:layout_constraintStart_toEndOf="@+id/btnFind"
-        android:onClick="deleteProductByProductId"/>
+        app:layout_constraintStart_toEndOf="@+id/btnFind" />
+
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="384dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="updateProduct"
+        android:text="Update"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout6"
+        app:layout_constraintStart_toStartOf="@+id/btnAdd"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnUpdate">
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
