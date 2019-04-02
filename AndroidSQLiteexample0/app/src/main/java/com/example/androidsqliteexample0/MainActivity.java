@@ -8,6 +8,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,8 +27,23 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
+
+
+
+
             }
         });
+        DatabaseHelper databaseHelper=new DatabaseHelper(this);
+       /* databaseHelper.addUserInfo(new UserInfo("A","017302154"));
+        databaseHelper.addUserInfo(new UserInfo("B","01655225"));*/
+        Toast.makeText(this, "Data inserted ", Toast.LENGTH_SHORT).show();
+
+        List<UserInfo> lists=databaseHelper.getallUser();
+        for (UserInfo us: lists){
+            String listPrint="id "+ us.getId()+"Name "+us.getName()+"Phone "+ us.getPhone_number();
+            Toast.makeText(this, listPrint, Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
