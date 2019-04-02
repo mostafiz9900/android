@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.jar.JarEntry;
 
 public class MyDbAdapter {
@@ -22,12 +24,13 @@ public class MyDbAdapter {
 
 
         public static final String TABLE_NAME = "PRODUCT";
+
         public static final String ID = "id";
         public static final String PRODUCT_NAME = "product_name";
         public static final String QTY = "qty";
 
-        private static final String CREATE_TABLE = "create table " + TABLE_NAME + "(" + ID + "INTEGER PRIMARY KEY AUTOINCREMENT," + PRODUCT_NAME + "TEXT NOT NULL," + QTY + "INTEGER NOT NULL)";
-
+        private static final String CREATE_TABLE = "create table " + TABLE_NAME + "(" + ID
+                + " INTEGER PRIMARY KEY AUTOINCREMENT, " + PRODUCT_NAME + " TEXT NOT NULL, " + QTY + " INTEGER NOT NULL)";
         public MyDbHelper(Context context) {
             super(context, DB_NAME, null, DB_VERSION);
         }
@@ -52,6 +55,14 @@ public class MyDbAdapter {
         contentValues.put(MyDbHelper.PRODUCT_NAME, product.getProductname());
         contentValues.put(MyDbHelper.QTY, product.getQuantity());
         long id = db.insert(MyDbHelper.TABLE_NAME, null, contentValues);
+        return id;
+    }
+    public long updateDate(Product product) {
+        SQLiteDatabase db = helper.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(MyDbHelper.PRODUCT_NAME, product.getProductname());
+        contentValues.put(MyDbHelper.QTY, product.getQuantity());
+        long id = db.update(MyDbHelper.TABLE_NAME,contentValues, MyDbHelper.ID+ "="+String.valueOf(product.getId()),null);
         return id;
     }
 
@@ -81,5 +92,27 @@ public void deleteProduct(int id){
     db.close();
 
 }
+
+    public List<Product> getList() {
+        SQLiteDatabase db = helper.getReadableDatabase();
+        String[] projection = {MyDbHelper.ID,
+                MyDbHelper.PRODUCT_NAME, MyDbHelper.QTY};
+        Cursor cursor = db.query(
+                MyDbHelper.TABLE_NAME,   // The table to query
+                projection,             // The array of columns to return (pass null to get all)
+                null,              // The columns for the WHERE clause
+                null,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                null               // The sort order
+        );
+        List<Product> list = new ArrayList<>();
+        while (cursor.moveToNext()) {
+            Product product = new Product(Integer.parseInt(cursor.getString(0)), cursor.getString(1), Integer.parseInt(cursor.getString(2)));
+            list.add(product);
+        }
+        cursor.close();
+        return list;
+    }
 
 }

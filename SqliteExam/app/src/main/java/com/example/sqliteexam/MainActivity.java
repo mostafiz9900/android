@@ -5,12 +5,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 EditText id, name, qty;
 MyDbAdapter helper;
-Context context;
+ListView listView;
+
 
 
     @Override
@@ -22,14 +26,30 @@ Context context;
         name=(EditText) findViewById(R.id.ptxtProduct);
         qty=(EditText) findViewById(R.id.ptxtQty);
         helper =new MyDbAdapter(this);
+        getProductlist();
+
+
+
     }
     public void saveProduct(View view){
         Product product=new Product(name.getText().toString(), Integer.parseInt(qty.getText().toString()));
         long i=helper.insertData(product);
-        if (i<0){
+        if (i < 0){
             Message.messages(this,"Unsccessful");
         }else {
+            getProductlist();
             Message.messages(this,"Successful");
+        }
+    }
+
+    public void updateProduct(View view){
+        Product product=new Product(Integer.parseInt(id.getText().toString()),name.getText().toString(), Integer.parseInt(qty.getText().toString()));
+        long i=helper.updateDate(product);
+        if (i < 0){
+            Message.messages(this,"update Unsccessful");
+        }else {
+
+            Message.messages(this,"update Successful");
         }
     }
     public void getProductByPrductId(View view){
@@ -45,6 +65,15 @@ Context context;
     public void deleteProductByProductId(View view){
         int pid=Integer.parseInt(id.getText().toString().trim());
         helper.deleteProduct(pid);
+        getProductlist();
         Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
+    }
+
+    public void getProductlist(){
+        listView=(ListView) findViewById(R.id.listView);
+        List<Product> list=helper.getList();
+        ProductAdapter adapter=new ProductAdapter(this, list);
+        listView.setAdapter(adapter);
+
     }
 }
