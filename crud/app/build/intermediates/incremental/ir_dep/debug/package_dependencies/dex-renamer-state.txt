@@ -1,0 +1,4 @@
+#Wed Apr 03 09:44:07 ALMT 2019
+base.0=D\:\\git\\myGit\\android\\crud\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\10
+path.0=classes.dex
+renamed.0=classes.dex
