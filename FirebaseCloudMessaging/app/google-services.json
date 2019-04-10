@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1075661943661",
+    "firebase_url": "https://mostafiz-a40ae.firebaseio.com",
+    "project_id": "mostafiz-a40ae",
+    "storage_bucket": "mostafiz-a40ae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1075661943661:android:7385506c386c2619",
+        "android_client_info": {
+          "package_name": "com.example.firebasecloudmessaging"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1075661943661-etbht17nm4nusgbouhcv515kvi02g7n6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgsiQNg78ssgDRZrT7Zn8XGg45vJ5QjeQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1075661943661-etbht17nm4nusgbouhcv515kvi02g7n6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
